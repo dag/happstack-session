@@ -23,9 +23,9 @@ getSessionID' :: ( Alternative m
                  , HasRqData m
                  ) => String -> CookieLife -> m SessionID
 getSessionID' name age =
-    optional (lookCookieValue name) >>= maybe newSession oldSession
+    optional (lookCookieValue name) >>= maybe new old
   where
-    oldSession = maybe newSession (return . SessionID) . fromString
-    newSession = do uuid <- liftIO randomIO
-                    addCookie age $ mkCookie name $ toString uuid
-                    return $ SessionID uuid
+    old = maybe new (return . SessionID) . fromString
+    new = do uuid <- liftIO randomIO
+             addCookie age $ mkCookie name $ toString uuid
+             return $ SessionID uuid
