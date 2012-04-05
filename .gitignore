@@ -1,0 +1,6 @@
+.*.*~
+.*.sw?
+cabal-dev
+dist
+state
+tags

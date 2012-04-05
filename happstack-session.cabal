@@ -1,0 +1,19 @@
+Name          : happstack-session
+Version       : 7.0.0
+License       : BSD3
+Cabal-Version : >= 1.9.2
+Build-Type    : Simple
+
+Library
+  GHC-Options     : -Wall
+  HS-Source-Dirs  : src
+  Exposed-Modules :
+    Happstack.Server.Session.ID
+    Happstack.Server.Session.Client
+  Build-Depends   :
+    base             == 4.*,
+    clientsession    == 0.7.*,
+    happstack-server == 7.0.*,
+    mtl              == 2.0.*,
+    random           == 1.0.*,
+    uuid             == 1.2.*
