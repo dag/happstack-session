@@ -1,4 +1,6 @@
+{-# LANGUAGE DeriveDataTypeable #-}
 {-# LANGUAGE FlexibleContexts #-}
+{-# LANGUAGE GeneralizedNewtypeDeriving #-}
 
 module Happstack.Server.Session.ID
   ( SessionID
@@ -8,12 +10,17 @@ module Happstack.Server.Session.ID
 
 import Control.Applicative (Alternative, optional)
 import Control.Monad.Trans (MonadIO, liftIO)
+import Data.Data           (Data, Typeable)
 import Data.SafeCopy       (SafeCopy(putCopy, getCopy), contain, safePut, safeGet)
 import Data.UUID           (UUID, toString, fromString, toWords, fromWords)
 import Happstack.Server    (CookieLife(MaxAge), FilterMonad, Response, HasRqData, mkCookie, addCookie, lookCookieValue)
-import System.Random       (randomIO)
+import System.Random       (Random, randomIO)
 
 newtype SessionID = SessionID UUID
+                    deriving (Eq, Ord, Data, Typeable, Random)
+
+instance Show SessionID where
+  show (SessionID uuid) = "SessionID{" ++ show uuid ++ "}"
 
 instance SafeCopy SessionID where
   putCopy (SessionID uuid) = contain . safePut . toWords $ uuid
