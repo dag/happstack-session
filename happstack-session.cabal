@@ -16,4 +16,5 @@ Library
     happstack-server == 7.0.*,
     mtl              == 2.0.*,
     random           == 1.0.*,
+    safecopy         == 0.6.*,
     uuid             == 1.2.*
