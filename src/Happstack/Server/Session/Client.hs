@@ -1,7 +1,13 @@
 {-# LANGUAGE FlexibleContexts #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 
-module Happstack.Server.Session.Client where
+module Happstack.Server.Session.Client
+  ( ClientSession(empty)
+  , getSession
+  , putSession
+  , getSession'
+  , putSession'
+  ) where
 
 import Control.Applicative   (Alternative, optional)
 import Control.Monad.Trans   (MonadIO, liftIO)
