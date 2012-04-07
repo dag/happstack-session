@@ -8,8 +8,8 @@ Library
   GHC-Options     : -Wall
   HS-Source-Dirs  : src
   Exposed-Modules :
-    Happstack.Server.Session.ID
     Happstack.Server.Session.Client
+    Happstack.Server.Session.ID
   Build-Depends   :
     base             == 4.*,
     bytestring       == 0.9.*,
