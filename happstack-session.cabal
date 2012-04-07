@@ -12,6 +12,8 @@ Library
     Happstack.Server.Session.Client
   Build-Depends   :
     base             == 4.*,
+    bytestring       == 0.9.*,
+    cereal           == 0.3.*,
     clientsession    == 0.7.*,
     happstack-server == 7.0.*,
     mtl              == 2.0.*,
